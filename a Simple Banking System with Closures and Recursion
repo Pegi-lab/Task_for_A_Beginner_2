@@ -1,0 +1,40 @@
+def creat_account(initial_balance):
+    balance = initial_balance
+
+    def deposit(amount):
+        nonlocal balance
+        balance += amount
+        print(f'Deposited: {amount}, New Balance:{balance}')
+
+    def withdraw(amount):
+        nonlocal balance
+        if amount <= balance:
+            balance -= amount
+            print(f'Withdraw:{amount}, New Balance:{balance}')
+        else:
+            print('Transaction failed: insufficient funds.')
+    
+    def get_balance():
+        return balance
+    
+    def manage_account():
+        action = input('Choose an action (deposit, withdraw, balance, exit): ').strip().lower()
+        if action == 'deposit':
+            amount = float(input('Enter the amount to deposit: '))
+            deposit(amount)
+            manage_account()
+        elif action == 'withdraw':
+            amount = float(input('Enter the amount to withdraw: '))
+            withdraw(amount)
+            manage_account()
+        elif action == 'balance':
+            print(f'Current balance:{get_balance()}')
+            manage_account()
+        elif action == 'exit':
+            print('Exiting Bank Management.')
+        else:
+            print('Invalid action. Please pay attention.')
+            manage_account()
+    return manage_account
+account_manager = creat_account(100)
+account_manager()
