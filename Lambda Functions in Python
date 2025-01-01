@@ -1,0 +1,22 @@
+from functools import reduce
+
+cube = lambda x: x**6
+print(cube(8))
+sub_by_3 = lambda x: x-3
+print(sub_by_3(12))
+product = lambda x,y: x*y
+print(product(9,123))
+
+def multiplyBuilder(factor):
+    return lambda x: x*factor
+multiply_eight = multiplyBuilder(8)
+print(multiply_eight(12))
+multiply_eleven = multiplyBuilder(11)
+print(multiply_eleven(4))
+
+print(list(map(lambda x: x*4, [2, 4, 6, 8, 10])))
+print(list(filter(lambda x: x>6, [3, 6, 9, 12, 15, 18])))
+print(reduce(lambda x,y: x*y, [21, 24, 27]))
+
+students = [('kiana', 19), ('amir',20), ('nazanin',18)]
+print(sorted(students, key=lambda x: x[1], reverse=True))
