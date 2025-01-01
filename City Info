@@ -1,0 +1,35 @@
+import random
+
+food = 'Beryooni'
+historical_place = 'Chehelsotun'
+river = 'Zayandehrud'
+museum = 'Bastan Shenasi'
+
+def random_city_funfact():
+    funfacts = [
+        'if you see a high-end car driver and an old bicyclist on the street in Isfahan, you should know the bicyclist is richer.',
+        'if you use the word -keke- in your sentences, you will be considered as an Isfahanian.'
+    ]
+    print(random.choice(funfacts))
+random_city_funfact()
+
+import argparse
+def great_person(name, time_of_day):
+    time = {'morning':'Good Morning', 
+            'afternoon' : 'Good Afternoon', 
+            'evening' : 'Good evening'}
+    message = f'{time[time_of_day]} {name} !'
+    print(message)
+
+if __name__ == '__main__':
+    import argparse
+    parser = argparse.ArgumentParser(
+        description='personal greeting.')
+    parser.add_argument('-n', '--name', metavar='name',
+                        required=True, help='The name of the person.')
+    parser.add_argument('-t', '--time_of_day', metavar='time_of_day',
+                        required=True, choices=['morning','afternoon','evening'],
+                        help='The time of day.')
+    args = parser.parse_args()
+    great_person(args.name, args.time_of_day)
+    
